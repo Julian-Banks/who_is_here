@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plentify Attendance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #007BFF;
+            color: white;
+        }
+        tr:hover {
+            background: #f1f1f1;
+        }
+        #message {
+            font-size: 18px;
+            color: #666;
+        }
+    </style>
+    <script>
+        function fetchData() {
+            fetch("/data")
+                .then(response => response.json())
+                .then(data => {
+                    let tableBody = document.getElementById("table-body");
+                    let message = document.getElementById("message");
+                    
+                    tableBody.innerHTML = ""; // Clear previous data
+                    
+                    if (data.length === 0) {
+                        message.innerText = "No devices detected.";
+                        return;
+                    }
+
+                    message.innerText = ""; // Clear message
+                    data.forEach(device => {
+                        let row = `<tr>
+                            <td>${device.name}</td>
+                            <td>${device.first_seen}</td>
+                            <td>${device.last_seen}</td>
+                        </tr>`;
+                        tableBody.innerHTML += row;
+                    });
+                })
+                .catch(error => {
+                    console.error("Error fetching data:", error);
+                    document.getElementById("message").innerText = "Failed to load data.";
+                });
+        }
+
+        setInterval(fetchData, 10000); // Refresh every 10 seconds
+        window.onload = fetchData; // Load data on page load
+    </script>
+</head>
+<body>
+    <h1>Plentify Attendance</h1>
+    <p id="message">Loading...</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Device Name</th>
+                <th>First Seen</th>
+                <th>Last Seen</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+</body>
+</html>
+

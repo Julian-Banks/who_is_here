@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Tracker</title>
+    <script>
+        function fetchData() {
+            fetch("/data")
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("data").innerText = JSON.stringify(data, null, 2);
+                });
+        }
+
+        setInterval(fetchData, 10000); // Refresh data every 5 minutes (300,000 ms)
+        window.onload = fetchData; // Load data on page load
+    </script>
+</head>
+<body>
+    <h1>Device Tracker</h1>
+    <pre id="data">Loading...</pre>
+</body>
+</html>
