@@ -15,7 +15,9 @@ class attendance_list():
         "c8:89:f3:e4:45:fe": "Julian's Laptop",
 	"32:0D:49:12:34:65": "Arno's Phone",
         "34:41:5d:91:b8:c9": "Arno's Laptop",
-        }
+        "62:95:8B:54:C3:5C": "Coral's Iphone",
+        "3e:88:6c:11:dc:3a": "Leko's Iphone",
+ }
         #A list of everyone who has been present today. Dict keys("name", "first_seen", "last_seen")
         self.present: List[Dict[str,str]] = []
         self.start_background_tasks()
@@ -52,7 +54,6 @@ class attendance_list():
         threading.Thread(target = self.check_attendance_loop, daemon=True).start()
 
 
-
     def get_unique_mac_addresses(self) -> Set[str]:
         try:
             # Run arp-scan and capture the output.
@@ -74,11 +75,18 @@ class attendance_list():
     def process_macs(self)->None:
 
         mac_addresses = self.get_unique_mac_addresses()
+        mac_addresses = self.to_lower(mac_addresses)
+        KNOWN_MACS = self.get_known_macs() # Get all macs, lowercase
 
         for mac in mac_addresses:
-           if mac in self.KNOWN_MACS:
-               self.process_attendance(self.KNOWN_MACS[mac])
+           #Make sure the mac address is in lower case
 
+           if mac in KNOWN_MACS:
+               self.process_attendance(KNOWN_MACS[mac])
+               #print(f"Mac: {mac}, Name: {KNOWN_MACS[mac]}")
+           else:
+               pass
+               #print(mac)
 
     def process_attendance(self,name: str)  -> None:
         #Get the current time to update Last Seen
@@ -94,6 +102,17 @@ class attendance_list():
         self.present.append({"name":name, "first_seen":current_time, "last_seen":current_time})
         return None
 
+
+    def get_known_macs(self) -> Dict[str,str] :
+        KNOWN_MACS = {key.lower(): value for key, value in self.KNOWN_MACS.items()}
+        #print(KNOWN_MACS)
+        return KNOWN_MACS
+
+    def to_lower(self, set_to_lower: Set[str]) -> Set[str]:
+        result = set()  # Initialize an empty set
+        for item in set_to_lower:
+            result.add(item.lower())  # Convert to lowercase and add to set
+        return result
 
 #Printing out some stuff to see
 #mac_addresses = attendance_list.get_unique_mac_addresses()
