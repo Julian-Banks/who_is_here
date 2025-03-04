@@ -4,20 +4,20 @@ A library to scan your local network and display a list of people present on a s
 A Flask app running on a WSGI server using built-in HTTP capabilities.  
 
 ## Enviornment
-Running on a Raspberry Pi 5. 
+Running on a Raspberry Pi 5.  \
 Debian version: 12 (bookworm), 64-bit
 
 ## Getting started
 
 Clone the repo onto your Pi: [Git Docs for cloning](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 
-Create your Python Virtual environment:
-$ python -m venv venv
-Activate it:
-$ source venv/bin/activate \
+Create your Python Virtual environment: \
+$ python -m venv venv \
+Activate it: \
+$ source venv/bin/activate 
 
-Install uWSGI: 
-pip install uwsgi \
+Install uWSGI: \
+pip install uwsgi 
 
 Quick start: \
 This should get the app up and running on your local network. Access it from any other device by going to PIs_IP_ADDRESS:8000. \
