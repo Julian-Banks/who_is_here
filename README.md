@@ -32,6 +32,6 @@ To do:
 
 ## References:
 
-[Flask Documentation](https://flask.palletsprojects.com/en/stable/)
-[uWSGI Documentation](https://flask.palletsprojects.com/en/stable/deploying/uwsgi/)
+[Flask Documentation](https://flask.palletsprojects.com/en/stable/) \
+[uWSGI Documentation](https://flask.palletsprojects.com/en/stable/deploying/uwsgi/) \
 Not currently used for Reverse Proxy: [Nginx with uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/Nginx.html)
