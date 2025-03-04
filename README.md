@@ -14,13 +14,13 @@ Clone the repo onto your Pi: [Git Docs for cloning](https://docs.github.com/en/r
 Create your Python Virtual environment:
 $ python -m venv venv
 Activate it:
-$ source venv/bin/activate
+$ source venv/bin/activate \
 
-Install uWSGI:
-pip install uwsgi
+Install uWSGI: \
+pip install uwsgi \
 
-Quick start: 
-This should get the app up and running on your local network. Access it from any other device by going to PIs_IP_ADDRESS:8000. 
+Quick start: \
+This should get the app up and running on your local network. Access it from any other device by going to PIs_IP_ADDRESS:8000. \
 $ uwsgi --http 0.0.0.0:8000 --master wsgi:app 
 
 Getting the Webserver up and running on startup and crash:
