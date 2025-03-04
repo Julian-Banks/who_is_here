@@ -16,7 +16,7 @@ $ python -m venv venv
 Activate it:
 $ source venv/bin/activate \
 
-Install uWSGI: \
+Install uWSGI: 
 pip install uwsgi \
 
 Quick start: \
