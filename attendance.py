@@ -11,12 +11,16 @@ class attendance_list():
         #A list of all known macs
         self.KNOWN_MACS = {
         "2e:9f:fb:96:70:a7": "Julian's Phone",
-	"a2:71:fe:a8:81:53": "Julian's Laptop (Home)",
+	"a2:71:fe:a8:81:53": "Julian's Laptop",
         "c8:89:f3:e4:45:fe": "Julian's Laptop",
 	"32:0D:49:12:34:65": "Arno's Phone",
         "34:41:5d:91:b8:c9": "Arno's Laptop",
         "62:95:8B:54:C3:5C": "Coral's Iphone",
         "3e:88:6c:11:dc:3a": "Leko's Iphone",
+        "32:0D:49:12:34:65": "Arno Scholtz",
+        "3e:2c:3b:bd:fd:09": "Charl Visser",
+        "e0:63:da:a2:af:7d": "Leon Daglish",
+        "24:AE:CC:7D:32:F5": "Daynan",
  }
         #A list of everyone who has been present today. Dict keys("name", "first_seen", "last_seen")
         self.present: List[Dict[str,str]] = []
