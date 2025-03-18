@@ -29,8 +29,8 @@ class attendance_list():
         "34-41-5d-91-b8-c9": "Arno [Laptop][Test -]",
         "34:41:5d:91:b8:c9": "Arno [Laptop][Test : ]",
         "c6:1c:28:34:ce:c3": "Shiyaam [Laptop]",
-        "32:26:E3:4A:F9:0F": "Cyrne [Phone][Test Upper Case]",
-        "F4:6D:3F:F3:EA:A8": "Cyrne [Laptop][Test Upper Case]",
+        "32:26:E3:4A:F9:0F": "Cyrne [Phone]",
+        "F4:6D:3F:F3:EA:A8": "Cyrne [Laptop]",
         "58-1C-F8-27-45-BB": "Leon [Laptop][Test - ]",
         "60-A5-E2-3B-1A-FA": "Charl[Laptop][Test - ]",
         "3a:bc:ff:44:6b:fb": "Ilaam [Phone]",
@@ -43,6 +43,7 @@ class attendance_list():
         "7e:d1:68:91:65:46": "Tam [Laptop]",
         "e2:2b:99:eb:8e:ac": "Shahied [Phone]",
         "70-CF-49-73-64-46": "Shahied [Laptop][Test - ]",
+        "70:CF:49:73:64:46": "Shahied [Laptop][Test : ]",
         "52:99:3F:EF:66:24": "Zenon [Phone]",
         "c6:65:79:10:ab:7b": "Zenon [Laptop]",
         "c2:db:f7:21:33"   : "Taya [Phone]",
@@ -136,6 +137,13 @@ class attendance_list():
         KNOWN_MACS = {key.lower(): value for key, value in self.KNOWN_MACS.items()}
         #print(KNOWN_MACS)
         return KNOWN_MACS
+    
+    def update_drill_attendance(self, name:str, drill_attendance:str) -> bool:
+        for entry in self.present:
+            if entry["name"] == name:
+                entry["drill_attendance"] = drill_attendance
+                return True
+        return False
 
     def to_lower(self, set_to_lower: Set[str]) -> Set[str]:
         result = set()  # Initialize an empty set

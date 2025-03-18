@@ -63,7 +63,7 @@
                             <td>${device.name}</td>
                             <td>${device.first_seen}</td>
                             <td>${device.last_seen}</td>
-                            <td><input type="checkbox" ${checkedAttribute} ></td>
+                            <td><input type="checkbox" ${checkedAttribute} onclick="updateAttendance('${device.name}', this.checked)"></td>
                         </tr>`;
                         tableBody.innerHTML += row;
                     });
@@ -72,6 +72,16 @@
                     console.error("Error fetching data:", error);
                     document.getElementById("message").innerText = "Failed to load data.";
                 });
+        }
+        function updateAttendance(name, checked) {
+            fetch("/update_attendance", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ "name": name, "drill_attendance": checked ? "checked" : "" })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error("Error updating attendance:", error));
         }
 
         setInterval(fetchData, 10000); // Refresh every 10 seconds
@@ -87,6 +97,7 @@
                 <th>Device Name</th>
                 <th>First Seen</th>
                 <th>Last Seen</th>
+                <th></th>
             </tr>
         </thead>
         <tbody id="table-body">
