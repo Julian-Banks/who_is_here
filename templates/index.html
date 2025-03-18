@@ -58,10 +58,12 @@
 
                     message.innerText = ""; // Clear message
                     data.forEach(device => {
+                        let checkedAttribute = device.drill_attendance ? "checked":"";
                         let row = `<tr>
                             <td>${device.name}</td>
                             <td>${device.first_seen}</td>
                             <td>${device.last_seen}</td>
+                            <td><input type="checkbox" ${checkedAttribute} ></td>
                         </tr>`;
                         tableBody.innerHTML += row;
                     });

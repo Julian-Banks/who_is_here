@@ -11,34 +11,51 @@ class attendance_list():
         #A list of all known macs
         self.KNOWN_MACS = {
         "2e:9f:fb:96:70:a7": "Julian's Phone",
-	"a2:71:fe:a8:81:53": "Julian's Laptop",
+	    "a2:71:fe:a8:81:53": "Julian's Laptop",
         "c8:89:f3:e4:45:fe": "Julian's Laptop",
-	"32:0D:49:12:34:65": "Arno's Phone",
-        "34:41:5d:91:b8:c9": "Arno's Laptop",
-        "62:95:8B:54:C3:5C": "Coral's Iphone",
-        "3e:88:6c:11:dc:3a": "Leko's Iphone",
-        "32:0D:49:12:34:65": "Arno Scholtz",
-        "3e:2c:3b:bd:fd:09": "Charl Visser",
-        "e0:63:da:a2:af:7d": "Leon Daglish",
-        "24:AE:CC:7D:32:F5": "Daynan",
-        "C4:06:83:D7:74:65": "Maurisha  Upper",
-        "c4:06:83:d7:74:65": "Maurisha Lower",
+	    "32:0D:49:12:34:65": "Arno's Phone",
+        "62:95:8B:54:C3:5C": "Coral [Phone]",
+        "3e:88:6c:11:dc:3a": "Leko's [Phone]",
+        "32:0D:49:12:34:65": "Arno Scholtz[Phone]",
+        "3e:2c:3b:bd:fd:09": "Charl Visser[Phone]",
+        "e0:63:da:a2:af:7d": "Leon Daglish [Phone]",
+        "24:AE:CC:7D:32:F5": "Daynan [Phone]",
+        "C4:06:83:D7:74:65": "Maurisha  [Phone][Uppercase]",
+        "c4:06:83:d7:74:65": "Maurisha [Phone][Test Lowercase]",
         "a4:c6:9a:62:f0:61": "SHIYAAM android",
-        "d0:88:0c:9a:70:7b": "shiyaam Apple",
-        "32:26:E3:4A:F9:0F": "Cyrne Phone",
-        "F4:6D:3F:F3:EA:A8": "Cyrne Laptop",
-        "34-41-5d-91-b8-c9": "Arno Laptop -",
-        "34:41:5d:01:b8:c0": "Arno Laptop :",
-        "c6:1c:28:34:ce:c3": "Shiyaam Laptop",
- }
-        #A list of everyone who has been present today. Dict keys("name", "first_seen", "last_seen")
-        self.present: List[Dict[str,str]] = []
+        "d0:88:0c:9a:70:7b": "Shiyaam [Laptop]",
+        "32:26:E3:4A:F9:0F": "Cyrne [Phone]",
+        "F4:6D:3F:F3:EA:A8": "Cyrne [Laptop]",
+        "34-41-5d-91-b8-c9": "Arno [Laptop][Test -]",
+        "34:41:5d:91:b8:c9": "Arno [Laptop][Test : ]",
+        "c6:1c:28:34:ce:c3": "Shiyaam [Laptop]",
+        "32:26:E3:4A:F9:0F": "Cyrne [Phone][Test Upper Case]",
+        "F4:6D:3F:F3:EA:A8": "Cyrne [Laptop][Test Upper Case]",
+        "58-1C-F8-27-45-BB": "Leon [Laptop][Test - ]",
+        "60-A5-E2-3B-1A-FA": "Charl[Laptop][Test - ]",
+        "3a:bc:ff:44:6b:fb": "Ilaam [Phone]",
+        "60-45-2E-E6-1D-CE": "Ilaam [Laptop]",
+        "ca:ce:cc:59:64:88": "Jon [Phone]",
+        "b0:f1:d8:4d:37:1f": "Jon [Laptop]",
+        "f8:0f:f9:e0:59:46": "Thalia [Phone]",
+        "CC-15-31-6D-9D-0E": "Thalia [Laptop][Test - ]",
+        "12:69:9C:7B:F8:51": "Tam [Phone]",
+        "7e:d1:68:91:65:46": "Tam [Laptop]",
+        "e2:2b:99:eb:8e:ac": "Shahied [Phone]",
+        "70-CF-49-73-64-46": "Shahied [Laptop][Test - ]",
+        "52:99:3F:EF:66:24": "Zenon [Phone]",
+        "c6:65:79:10:ab:7b": "Zenon [Laptop]",
+        "c2:db:f7:21:33"   : "Taya [Phone]",
+        "26:05:7b:30:ee:35": "Taya [Laptop]",
+    }
+        #A list of everyone who has been present today. Dict keys("name", "first_seen", "last_seen", present)
+        self.present: List[Dict[str,str,bool]] = []
         self.start_background_tasks()
         self.sleep_period :int = 10
 
 
     #Public API to get the list of people present
-    def get_present(self) -> List[Dict[str,str]]:
+    def get_present(self) -> List[Dict[str,str, bool]]:
          return self.present
 
     #counter loop to run self.process_macs() periodically
@@ -111,7 +128,7 @@ class attendance_list():
                 self.present[index]["last_seen"] = current_time
                 return None
         #If the function has not ended then the name is not in the present list. Add it with current time
-        self.present.append({"name":name, "first_seen":current_time, "last_seen":current_time})
+        self.present.append({"name":name, "first_seen":current_time, "last_seen":current_time, "drill_attendance":False})
         return None
 
 
