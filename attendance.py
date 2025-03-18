@@ -21,6 +21,15 @@ class attendance_list():
         "3e:2c:3b:bd:fd:09": "Charl Visser",
         "e0:63:da:a2:af:7d": "Leon Daglish",
         "24:AE:CC:7D:32:F5": "Daynan",
+        "C4:06:83:D7:74:65": "Maurisha  Upper",
+        "c4:06:83:d7:74:65": "Maurisha Lower",
+        "a4:c6:9a:62:f0:61": "SHIYAAM android",
+        "d0:88:0c:9a:70:7b": "shiyaam Apple",
+        "32:26:E3:4A:F9:0F": "Cyrne Phone",
+        "F4:6D:3F:F3:EA:A8": "Cyrne Laptop",
+        "34-41-5d-91-b8-c9": "Arno Laptop -",
+        "34:41:5d:01:b8:c0": "Arno Laptop :",
+        "c6:1c:28:34:ce:c3": "Shiyaam Laptop",
  }
         #A list of everyone who has been present today. Dict keys("name", "first_seen", "last_seen")
         self.present: List[Dict[str,str]] = []
@@ -81,10 +90,9 @@ class attendance_list():
         mac_addresses = self.get_unique_mac_addresses()
         mac_addresses = self.to_lower(mac_addresses)
         KNOWN_MACS = self.get_known_macs() # Get all macs, lowercase
+        print(mac_addresses)
 
         for mac in mac_addresses:
-           #Make sure the mac address is in lower case
-
            if mac in KNOWN_MACS:
                self.process_attendance(KNOWN_MACS[mac])
                #print(f"Mac: {mac}, Name: {KNOWN_MACS[mac]}")
