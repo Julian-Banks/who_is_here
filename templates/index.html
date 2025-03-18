@@ -57,7 +57,8 @@
                     }
 
                     message.innerText = ""; // Clear message
-                    data.forEach(device => {
+                    data.sort((a, b) => a.name.localeCompare(b.name))
+                        .forEach(device => {
                         let checkedAttribute = device.drill_attendance ? "checked":"";
                         let row = `<tr>
                             <td>${device.name}</td>
