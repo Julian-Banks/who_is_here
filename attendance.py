@@ -21,12 +21,10 @@ class attendance_list():
         "24:AE:CC:7D:32:F5": {"name": "Daynan", "device": "Phone"},
         "C4:06:83:D7:74:65": {"name": "Maurisha", "device": "Phone"},
         "a4:c6:9a:62:f0:61": {"name": "Shiyaam", "device": "Android"},
-        "d0:88:0c:9a:70:7b": {"name": "Shiyaam", "device": "Laptop 1"},
         "32:26:E3:4A:F9:0F": {"name": "Cyrne", "device": "Phone"},
         "F4:6D:3F:F3:EA:A8": {"name": "Cyrne", "device": "Laptop"},
-        "34-41-5d-91-b8-c9": {"name": "Arno", "device": "Laptop [ - ]"},
-        "34:41:5d:91:b8:c9": {"name": "Arno", "device": "Laptop [ : ]"},
-        "c6:1c:28:34:ce:c3": {"name": "Shiyaam", "device": "Laptop 2"},
+        "34:41:5d:91:b8:c9": {"name": "Arno", "device": "Laptop"},
+        "c6:1c:28:34:ce:c3": {"name": "Shiyaam", "device": "Laptop"},
         "58:1C:F8:27:45:BB": {"name": "Leon", "device": "Laptop"},
         "60:A5:E2:3B:1A:FA": {"name": "Charl", "device": "Laptop"},
         "3a:bc:ff:44:6b:fb": {"name": "Ilaam", "device": "Phone"},
@@ -142,11 +140,15 @@ class attendance_list():
         return KNOWN_MACS
     
     def update_drill_attendance(self, name:str, drill_attendance:str) -> bool:
+        flag : bool = False
         for entry in self.present:
             if entry["name"] == name:
                 entry["drill_attendance"] = drill_attendance
-                return True
-        return False
+                flag = True
+        if flag == True:
+            return True
+        else:
+            return False
 
     def to_lower(self, set_to_lower: Set[str]) -> Set[str]:
         result = set()  # Initialize an empty set
