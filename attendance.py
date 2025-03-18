@@ -10,44 +10,39 @@ class attendance_list():
     def __init__(self):
         #A list of all known macs
         self.KNOWN_MACS = {
-        "2e:9f:fb:96:70:a7": "Julian's Phone",
-	    "a2:71:fe:a8:81:53": "Julian's Laptop",
-        "c8:89:f3:e4:45:fe": "Julian's Laptop",
-	    "32:0D:49:12:34:65": "Arno's Phone",
-        "62:95:8B:54:C3:5C": "Coral [Phone]",
-        "3e:88:6c:11:dc:3a": "Leko's [Phone]",
-        "32:0D:49:12:34:65": "Arno Scholtz[Phone]",
-        "3e:2c:3b:bd:fd:09": "Charl Visser[Phone]",
-        "e0:63:da:a2:af:7d": "Leon Daglish [Phone]",
-        "24:AE:CC:7D:32:F5": "Daynan [Phone]",
-        "C4:06:83:D7:74:65": "Maurisha  [Phone][Uppercase]",
-        "c4:06:83:d7:74:65": "Maurisha [Phone][Test Lowercase]",
-        "a4:c6:9a:62:f0:61": "SHIYAAM android",
-        "d0:88:0c:9a:70:7b": "Shiyaam [Laptop]",
-        "32:26:E3:4A:F9:0F": "Cyrne [Phone]",
-        "F4:6D:3F:F3:EA:A8": "Cyrne [Laptop]",
-        "34-41-5d-91-b8-c9": "Arno [Laptop][Test -]",
-        "34:41:5d:91:b8:c9": "Arno [Laptop][Test : ]",
-        "c6:1c:28:34:ce:c3": "Shiyaam [Laptop]",
-        "32:26:E3:4A:F9:0F": "Cyrne [Phone]",
-        "F4:6D:3F:F3:EA:A8": "Cyrne [Laptop]",
-        "58-1C-F8-27-45-BB": "Leon [Laptop][Test - ]",
-        "60-A5-E2-3B-1A-FA": "Charl[Laptop][Test - ]",
-        "3a:bc:ff:44:6b:fb": "Ilaam [Phone]",
-        "60-45-2E-E6-1D-CE": "Ilaam [Laptop]",
-        "ca:ce:cc:59:64:88": "Jon [Phone]",
-        "b0:f1:d8:4d:37:1f": "Jon [Laptop]",
-        "f8:0f:f9:e0:59:46": "Thalia [Phone]",
-        "CC-15-31-6D-9D-0E": "Thalia [Laptop][Test - ]",
-        "12:69:9C:7B:F8:51": "Tam [Phone]",
-        "7e:d1:68:91:65:46": "Tam [Laptop]",
-        "e2:2b:99:eb:8e:ac": "Shahied [Phone]",
-        "70-CF-49-73-64-46": "Shahied [Laptop][Test - ]",
-        "70:CF:49:73:64:46": "Shahied [Laptop][Test : ]",
-        "52:99:3F:EF:66:24": "Zenon [Phone]",
-        "c6:65:79:10:ab:7b": "Zenon [Laptop]",
-        "c2:db:f7:21:33"   : "Taya [Phone]",
-        "26:05:7b:30:ee:35": "Taya [Laptop]",
+        "2e:9f:fb:96:70:a7": {"name": "Julian", "device": "Phone"},
+	    "a2:71:fe:a8:81:53": {"name": "Julian", "device": "Laptop"},
+        "c8:89:f3:e4:45:fe": {"name": "Julian", "device": "Laptop"},
+	    "32:0D:49:12:34:65": {"name": "Arno", "device": "Phone"},
+        "62:95:8B:54:C3:5C": {"name": "Coral", "device": "Phone"},
+        "3e:88:6c:11:dc:3a": {"name": "Leko", "device": "Phone"},
+        "3e:2c:3b:bd:fd:09": {"name": "Charl", "device": "Phone"},
+        "e0:63:da:a2:af:7d": {"name": "Leon", "device": "Phone"},
+        "24:AE:CC:7D:32:F5": {"name": "Daynan", "device": "Phone"},
+        "C4:06:83:D7:74:65": {"name": "Maurisha", "device": "Phone"},
+        "a4:c6:9a:62:f0:61": {"name": "Shiyaam", "device": "Android"},
+        "d0:88:0c:9a:70:7b": {"name": "Shiyaam", "device": "Laptop 1"},
+        "32:26:E3:4A:F9:0F": {"name": "Cyrne", "device": "Phone"},
+        "F4:6D:3F:F3:EA:A8": {"name": "Cyrne", "device": "Laptop"},
+        "34-41-5d-91-b8-c9": {"name": "Arno", "device": "Laptop [ - ]"},
+        "34:41:5d:91:b8:c9": {"name": "Arno", "device": "Laptop [ : ]"},
+        "c6:1c:28:34:ce:c3": {"name": "Shiyaam", "device": "Laptop 2"},
+        "58:1C:F8:27:45:BB": {"name": "Leon", "device": "Laptop"},
+        "60:A5:E2:3B:1A:FA": {"name": "Charl", "device": "Laptop"},
+        "3a:bc:ff:44:6b:fb": {"name": "Ilaam", "device": "Phone"},
+        "60:45:2E:E6:1D:CE": {"name": "Ilaam", "device": "Laptop"},
+        "ca:ce:cc:59:64:88": {"name": "Jon", "device": "Phone"},
+        "b0:f1:d8:4d:37:1f": {"name": "Jon", "device": "Laptop"},
+        "f8:0f:f9:e0:59:46": {"name": "Thalia", "device": "Phone"},
+        "CC:15:31:6D:9D:0E": {"name": "Thalia", "device": "Laptop"},
+        "12:69:9C:7B:F8:51": {"name": "Tam", "device": "Phone"},
+        "7e:d1:68:91:65:46": {"name": "Tam", "device": "Laptop"},
+        "e2:2b:99:eb:8e:ac": {"name": "Shahied", "device": "Phone"},
+        "70:CF:49:73:64:46": {"name": "Shahied", "device": "Laptop"},
+        "52:99:3F:EF:66:24": {"name": "Zenon", "device": "Phone"},
+        "c6:65:79:10:ab:7b": {"name": "Zenon", "device": "Laptop"},
+        "c2:db:f7:21:33"   : {"name": "Taya", "device": "Phone"},
+        "26:05:7b:30:ee:35": {"name": "Taya", "device": "Laptop"},
     }
         #A list of everyone who has been present today. Dict keys("name", "first_seen", "last_seen", present)
         self.present: List[Dict[str,str]] = []
@@ -112,24 +107,32 @@ class attendance_list():
 
         for mac in mac_addresses:
            if mac in KNOWN_MACS:
-               self.process_attendance(KNOWN_MACS[mac])
+               self.process_attendance(mac)
                #print(f"Mac: {mac}, Name: {KNOWN_MACS[mac]}")
            else:
                pass
                #print(mac)
 
-    def process_attendance(self,name: str)  -> None:
+    def process_attendance(self,mac: str)  -> None:
         #Get the current time to update Last Seen
         current_time = datetime.now().strftime("%H:%M")
 
+        device_info = self.get_known_macs()[mac]
+        
 	#Check the present list to see if the mac is already there and update last seen if it is
         for index, entry in enumerate(self.present):
-            if entry["name"] == name:
+            if entry["name"] == device_info["name"] and entry["device"] == device_info["device"]:
                 #if the name is in the present list then just update and return. 
                 self.present[index]["last_seen"] = current_time
                 return None
-        #If the function has not ended then the name is not in the present list. Add it with current time
-        self.present.append({"name":name, "first_seen":current_time, "last_seen":current_time, "drill_attendance":""})
+        #If the function has not ended then the name is not in the present list. Add it with current time    
+        self.present.append({
+            "name": device_info["name"],
+            "device": device_info["device"],
+            "first_seen": current_time,
+            "last_seen": current_time,
+            "drill_attendance": ""
+        })
         return None
 
 

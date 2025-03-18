@@ -62,6 +62,7 @@
                         let checkedAttribute = device.drill_attendance ? "checked":"";
                         let row = `<tr>
                             <td>${device.name}</td>
+                            <td>${device.device}</td>
                             <td>${device.first_seen}</td>
                             <td>${device.last_seen}</td>
                             <td><input type="checkbox" ${checkedAttribute} onclick="updateAttendance('${device.name}', this.checked)"></td>
@@ -90,12 +91,13 @@
     </script>
 </head>
 <body>
-    <h1>Plentify Attendance</h1>
+    <h1>Plentify Fire Drill Attendance</h1>
     <p id="message">Loading...</p>
     <table>
         <thead>
             <tr>
-                <th>Device Name</th>
+                <th>Name</th>
+                <th>Device</th>
                 <th>First Seen</th>
                 <th>Last Seen</th>
                 <th></th>
