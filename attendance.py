@@ -49,13 +49,13 @@ class attendance_list():
         "26:05:7b:30:ee:35": "Taya [Laptop]",
     }
         #A list of everyone who has been present today. Dict keys("name", "first_seen", "last_seen", present)
-        self.present: List[Dict[str,str,bool]] = []
+        self.present: List[Dict[str,str]] = []
         self.start_background_tasks()
         self.sleep_period :int = 10
 
 
     #Public API to get the list of people present
-    def get_present(self) -> List[Dict[str,str, bool]]:
+    def get_present(self) -> List[Dict[str,str]]:
          return self.present
 
     #counter loop to run self.process_macs() periodically
@@ -128,7 +128,7 @@ class attendance_list():
                 self.present[index]["last_seen"] = current_time
                 return None
         #If the function has not ended then the name is not in the present list. Add it with current time
-        self.present.append({"name":name, "first_seen":current_time, "last_seen":current_time, "drill_attendance":False})
+        self.present.append({"name":name, "first_seen":current_time, "last_seen":current_time, "drill_attendance":""})
         return None
 
 
