@@ -1,0 +1,13 @@
+[Unit]
+Description=Service to start the attendance app on boot & failure. 
+
+[Service]
+
+ExecStart=/home/pi/Documents/who_is_here/start_app.sh
+
+Restart=always
+
+User=pi
+
+[Install]
+WantedBy=multi-user.target
