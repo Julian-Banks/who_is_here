@@ -25,17 +25,17 @@ $ uwsgi --socket 0.0.0.0:8000 --protocol=http -w wsgi:app \
 (Note: I have not been able to get the uwsgi_config.ini file to work as expected)
 
 Getting the Webserver up and running on startup and crash: \
-To do: 
-Run this command to make the start_app.sh file executable
-$ chmod +x start_uwsgi.sh
-//Copy the service from the service_resources folder to the systemd system folder
-sudo cp start_app_service.service /etc/systemd/system
-//reload the daemon
-sudo systemctl daemon-reload
-// Enable the service
-sudo systemctl enable start_app_service
-//start the service
-sudo systemctl start start_app_service
+
+Run this command to make the start_app.sh file executable \
+$ chmod +x start_uwsgi.sh \ 
+//Copy the service from the service_resources folder to the systemd system folder \
+sudo cp start_app_service.service /etc/systemd/system \
+//reload the daemon \
+sudo systemctl daemon-reload \
+// Enable the service \
+sudo systemctl enable start_app_service \
+//start the service \
+sudo systemctl start start_app_service \
 
 
 [Systemd](https://github.com/thagrol/Guides/blob/main/boot.pdf)
