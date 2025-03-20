@@ -21,10 +21,12 @@ pip install uwsgi
 
 Quick start: \
 This should get the app up and running on your local network. Access it from any other device by going to PIs_IP_ADDRESS:8000. \
-$ uwsgi --http 0.0.0.0:8000 --master wsgi:app 
+$ uwsgi --socket 0.0.0.0:8000 --protocol=http -w wsgi:app \
+(Note: I have not been able to get the uwsgi_config.ini file to work as expected)
 
 Getting the Webserver up and running on startup and crash: \
-To do: \
+To do: 
+[Systemd](https://github.com/thagrol/Guides/blob/main/boot.pdf)
 
 
 
@@ -33,5 +35,6 @@ To do: \
 ## References:
 
 [Flask Documentation](https://flask.palletsprojects.com/en/stable/) \
-[uWSGI Documentation](https://flask.palletsprojects.com/en/stable/deploying/uwsgi/) \
+[uWSGI Documentation](https://uwsgi-docs.readthedocs.io/en/latest/index.html#quickstarts) \
 Not currently used for Reverse Proxy: [Nginx with uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/Nginx.html)
+[Systemd](https://github.com/thagrol/Guides/blob/main/boot.pdf)
